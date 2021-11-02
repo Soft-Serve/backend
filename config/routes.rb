@@ -1,12 +1,28 @@
 Rails.application.routes.draw do
-  resources :widgets
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: "registrations", sessions: "sessions" }
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get :find_current_user, controller: "application"
 
-  # You can have the root of your site routed with "root"
+  resources :restaurants, only: %i[show create update destroy] do
+    resources :dietaries, only: %i[index]
+    resources :menus, only: %i[index]
+    resources :users, only: %i[index]
+  end
 
-  root 'welcome#index'
+  resources :dietaries, only: %i[show create update destroy]
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: %i[update]
+
+  resources :menus, only: %i[show create update destroy] do
+    resources :menu_categories, only: %i[index]
+  end
+
+  resources :menu_categories, only: %i[show create update destroy] do
+    resources :menu_items, only: %i[index]
+  end
+
+  resources :menu_items, only: %i[show create update destroy] do
+    resources :item_sizes, only: %i[index show create update destroy]
+    resources :dietary_instances, only: %i[index create destroy]
+  end
 end

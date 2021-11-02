@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  protect_from_forgery unless: -> { request.format.json? }
+
+  def find_current_user
+    return nil unless current_user
+
+    render json: UserPresenter.new(current_user).serialize
+  end
 end
