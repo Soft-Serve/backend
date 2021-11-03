@@ -1,6 +1,11 @@
 class RestaurantsController < ApplicationController
   before_action :fetch, only: %i[show update destroy]
 
+
+  def index
+    render json: (collection.filter.map { |menu| serialize(menu) })
+  end
+
   def create
     result = RestaurantInteractor::Create.new(
       author: current_user,
@@ -57,6 +62,10 @@ class RestaurantsController < ApplicationController
 
   def fetch
     @restaurant = Restaurant.find_by(slug: params[:id]) || Restaurant.find_by(id: params[:id])
+  end
+
+  def collection
+    Restaurant.all
   end
 
   def strong_params
