@@ -40,6 +40,18 @@ gem 'devise_token_auth'
 
 gem 'puma'
 
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-byebug'
+
+  gem 'rspec-rails'
+
+  gem 'ruby_event_store-rspec'
+
+  gem 'factory_bot_rails'
+
+  gem 'dotenv-rails'
+end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
