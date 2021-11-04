@@ -1,0 +1,7 @@
+2021-11-03 20:09:10.094 CET [72686] LOG:  starting PostgreSQL 14.0 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2021-11-03 20:09:10.095 CET [72686] LOG:  listening on IPv6 address "::1", port 5432
+2021-11-03 20:09:10.095 CET [72686] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-11-03 20:09:10.096 CET [72686] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-11-03 20:09:10.100 CET [72687] LOG:  database system was shut down at 2021-11-03 20:09:02 CET
+2021-11-03 20:09:10.104 CET [72686] LOG:  database system is ready to accept connections
+2021-11-03 20:11:56.719 CET [74788] FATAL:  database "ruby-getting-started_development" does not exist
