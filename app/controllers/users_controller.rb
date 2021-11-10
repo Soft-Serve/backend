@@ -19,6 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def find_current_user
+    if current_user
+      render json: UserPresenter.new(current_user).serialize
+    else
+      head :no_content
+    end
+  end
+
   private
 
   def collection
