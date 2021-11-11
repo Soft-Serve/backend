@@ -18,3 +18,8 @@
 
 # Ignore ruby-version
 /.ruby-version
+
+# Docker only used for development
+Dockerfile
+docker-compose.yml
+entrypoint.sh
