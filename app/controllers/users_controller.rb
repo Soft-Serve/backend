@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if current_user
       render json: UserPresenter.new(current_user).serialize
     else
-      head :no_content
+      nil
     end
   end
 
