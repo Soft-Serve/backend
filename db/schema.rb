@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2021_10_16_211616) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo"
-    t.string "primary_colour"
-    t.string "secondary_colour"
+    t.string "colour"
+    t.string "tint"
     t.string "currency", null: false
     t.string "slug", null: false
     t.string "address_line_1"
