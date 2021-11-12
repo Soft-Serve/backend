@@ -71,8 +71,8 @@ class RestaurantsController < ApplicationController
   def strong_params
     params.permit(
       :name,
-      :primary_colour,
-      :secondary_colour,
+      :colour,
+      :tint,
       :currency,
       :logo,
       :slug,

@@ -3,8 +3,8 @@ class Restaurant < ApplicationRecord
       cad: 'CAD'
   }.freeze
 
-  DEFAULT_PRIMARY = 'red-400'.freeze
-  DEFAULT_SECONDARY = '#2D3142'.freeze
+  DEFAULT_PRIMARY = 'red'.freeze
+  DEFAULT_SECONDARY = 400
 
   # Relations
   has_many :menus
@@ -13,8 +13,8 @@ class Restaurant < ApplicationRecord
 
   # Validations
   validates_presence_of :name
-  validates :primary_colour, presence: true
-  validates :secondary_colour, presence: true
+  validates :colour, presence: true
+  validates :tint, presence: true
   validates :currency, inclusion: { in: CURRENCIES.values }, allow_nil: false
 
   after_initialize :defaults
@@ -22,8 +22,8 @@ class Restaurant < ApplicationRecord
   def defaults
     unless persisted?
       self.currency = CURRENCIES[:cad]
-      self.primary_colour = DEFAULT_PRIMARY
-      self.secondary_colour = DEFAULT_SECONDARY
+      self.colour = DEFAULT_PRIMARY
+      self.tint = DEFAULT_SECONDARY
     end
   end
 end
