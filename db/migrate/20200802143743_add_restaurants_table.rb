@@ -3,8 +3,8 @@ class AddRestaurantsTable < ActiveRecord::Migration[5.2]
     create_table :restaurants do |t|
       t.string :name, null: false
       t.string :logo
-      t.string :primary_colour
-      t.string :secondary_colour
+      t.string :colour
+      t.integer :tint
       t.string :currency, null: false
     end
   end
