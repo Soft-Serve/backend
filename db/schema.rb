@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_211616) do
     t.string "name", null: false
     t.string "logo"
     t.string "colour"
-    t.string "tint"
+    t.integer "tint"
     t.string "currency", null: false
     t.string "slug", null: false
     t.string "address_line_1"
