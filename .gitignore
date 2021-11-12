@@ -18,7 +18,6 @@
 
 # Ignore ruby-version
 /.ruby-version
-/.env
 
 # Docker only used for development
 Dockerfile
