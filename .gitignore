@@ -15,10 +15,11 @@
 /log/*.log
 /tmp
 /.byebug_history
+.byebug_history
 
 # Ignore ruby-version
 /.ruby-version
-
+.env
 # Docker only used for development
 Dockerfile
 docker-compose.yml
