@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_211616) do
+ActiveRecord::Schema.define(version: 2021_11_12_235647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banners_tables", force: :cascade do |t|
+    t.string "header", null: false
+    t.string "photo"
+    t.string "sub_header"
+    t.bigint "restaurant_id", null: false
+    t.index ["restaurant_id"], name: "index_banners_tables_on_restaurant_id"
+  end
 
   create_table "dietaries", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_211616) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "banners_tables", "restaurants", on_delete: :cascade
   add_foreign_key "dietaries", "restaurants", on_delete: :cascade
   add_foreign_key "dietary_instances", "dietaries", on_delete: :cascade
   add_foreign_key "dietary_instances", "menu_items", on_delete: :cascade
