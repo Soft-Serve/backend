@@ -78,7 +78,7 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  config.action_mailer.default_url_options = { host: "https://soft-serve-backend-gcmw4.ondigitalocean.app/" }
+  config.action_mailer.default_url_options = { host: "https://softserve-3is5c.ondigitalocean.app/" }
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
@@ -98,8 +98,8 @@ Rails.application.configure do
     :port               => 587,
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
-    :user_name          => 'kristine-mcbride@hotmail.com',
-    :password           => 'password'
+    :user_name          => ENV['EMAIL']
+    :password           => ENV['PASSWORD']
   }
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
