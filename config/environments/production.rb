@@ -90,8 +90,6 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
 
-  # config.action_mailer.default_url_options = { :host => "soft-serve-backend-gcmw4.ondigitalocean.app", :protocol => "http" }
-
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
@@ -103,6 +101,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options[:protocol] = 'http'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
   Rails.application.routes.default_url_options[:host] = "soft-serve-backend-gcmw4.ondigitalocean.app"
 end
