@@ -15,12 +15,13 @@ ActiveRecord::Schema.define(version: 2021_11_12_235647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "banners_tables", force: :cascade do |t|
+  create_table "banners", force: :cascade do |t|
     t.string "header", null: false
     t.string "photo"
     t.string "sub_header"
+    t.boolean "active", default: true, null: false
     t.bigint "restaurant_id", null: false
-    t.index ["restaurant_id"], name: "index_banners_tables_on_restaurant_id"
+    t.index ["restaurant_id"], name: "index_banners_on_restaurant_id"
   end
 
   create_table "dietaries", force: :cascade do |t|
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_235647) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "banners_tables", "restaurants", on_delete: :cascade
+  add_foreign_key "banners", "restaurants", on_delete: :cascade
   add_foreign_key "dietaries", "restaurants", on_delete: :cascade
   add_foreign_key "dietary_instances", "dietaries", on_delete: :cascade
   add_foreign_key "dietary_instances", "menu_items", on_delete: :cascade
