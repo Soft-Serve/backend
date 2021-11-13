@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'restaurants#index'
 
-  scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
-    mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: "registrations", sessions: "sessions" }
-  end
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: "registrations", sessions: "sessions", confirmations: 'confirmations' }
 
   resources :restaurants, only: %i[show create update destroy] do
     resources :dietaries, only: %i[index]
