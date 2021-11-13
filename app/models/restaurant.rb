@@ -10,6 +10,7 @@ class Restaurant < ApplicationRecord
   has_many :menus
   has_many :dietaries
   has_many :users
+  has_many :banners
 
   # Validations
   validates_presence_of :name
