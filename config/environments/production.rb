@@ -90,7 +90,7 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { :host => "softserve-3is5c.ondigitalocean.app", :protocol => 'http' }
+  config.action_mailer.default_url_options = { :host => "soft-serve-backend-gcmw4.ondigitalocean.app", :protocol => 'http' }
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
