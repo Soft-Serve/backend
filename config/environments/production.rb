@@ -98,7 +98,7 @@ Rails.application.configure do
     :port               => 587,
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
-    :user_name          => ENV['EMAIL']
+    :user_name          => ENV['EMAIL'],
     :password           => ENV['PASSWORD']
   }
   # Do not dump schema after migrations.
