@@ -39,9 +39,6 @@ class User < ApplicationRecord
     if (!confirmed? || pending_reconfirmation?)
       yield
     else
-      p "CONFIRMED AT"
-      p self.confirmed_at
-      # self.errors.add(:email, :already_confirmed)
       false
     end
   end
