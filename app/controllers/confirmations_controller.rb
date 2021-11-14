@@ -1,8 +1,15 @@
 class ConfirmationsController < DeviseTokenAuth::ConfirmationsController
   def show
     @resource = resource_class.confirm_by_token(resource_params[:confirmation_token])
-    p 'ERRORS'
+    p "HEHEHEHEHEHHEHEHEHEHHEHEE"
+    p 'CLASS'
+    p resource_class
+    p "PARAMS"
+    p resource_params
+    p @resource
+    p "ERRORS"
     p @resource.errors
+
     if @resource.errors.empty?
       yield @resource if block_given?
 

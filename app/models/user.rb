@@ -12,6 +12,8 @@ class User < ApplicationRecord
   def confirm(args = {})
     p "SELF"
     p self
+    self.confirmed_at = nil if self.confirmed_at
+
     if confirmation_period_expired?
       self.errors.add(:email, :confirmation_period_expired,
         period: Devise::TimeInflector.time_ago_in_words(self.class.confirm_within.ago))
