@@ -10,36 +10,26 @@ class User < ApplicationRecord
 
 
   def confirm(args = {})
-    pending_any_confirmation do
-      if confirmation_period_expired?
-        self.errors.add(:email, :confirmation_period_expired,
-          period: Devise::TimeInflector.time_ago_in_words(self.class.confirm_within.ago))
-        return false
-      end
-
-      self.confirmed_at = Time.now.utc
-
-      saved = if pending_reconfirmation?
-        skip_reconfirmation!
-        self.email = unconfirmed_email
-        self.unconfirmed_email = nil
-
-        # We need to validate in such cases to enforce e-mail uniqueness
-        save(validate: true)
-      else
-        save(validate: args[:ensure_valid] == true)
-      end
-
-      after_confirmation if saved
-      saved
+    if confirmation_period_expired?
+      self.errors.add(:email, :confirmation_period_expired,
+        period: Devise::TimeInflector.time_ago_in_words(self.class.confirm_within.ago))
+      return false
     end
-  end
 
-  def pending_any_confirmation
-    if (!confirmed? || pending_reconfirmation?)
-      yield
+    self.confirmed_at = Time.now.utc
+
+    saved = if pending_reconfirmation?
+      skip_reconfirmation!
+      self.email = unconfirmed_email
+      self.unconfirmed_email = nil
+
+      # We need to validate in such cases to enforce e-mail uniqueness
+      save(validate: true)
     else
-      false
+      save(validate: args[:ensure_valid] == true)
     end
+
+    after_confirmation if saved
+    saved
   end
 end
