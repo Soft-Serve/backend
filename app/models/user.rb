@@ -7,4 +7,12 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   belongs_to :restaurant, class_name: 'Restaurant'
+
+  def pending_any_confirmation
+    if (!confirmed? || pending_reconfirmation?)
+      yield
+    else
+      false
+    end
+  end
 end
