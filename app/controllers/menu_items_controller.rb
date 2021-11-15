@@ -23,7 +23,7 @@ class MenuItemsController < ApplicationController
     if @menu_item
       render json: serialize(@menu_item)
     else
-      render 'Not found', status: :not_found
+      render json: { errors: "No items with id" }, status: :unprocessable_entity
     end
   end
 

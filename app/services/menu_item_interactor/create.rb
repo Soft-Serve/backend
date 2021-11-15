@@ -28,6 +28,7 @@ module MenuItemInteractor
         ).call
       end
 
+
       ::Result::Ok.new(menu_item)
     rescue StandardError => e
       Result::Error.new(errors: [e.message])
