@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :fetch, only: %i[show update destroy]
 
-
   def index
     render json: (collection.filter.map { |menu| serialize(menu) })
   end
@@ -23,7 +22,7 @@ class RestaurantsController < ApplicationController
     if @restaurant
       render json: serialize(@restaurant)
     else
-      render 'Not found', status: :not_found
+      render json: { errors: "No restaurants with id" }, status: :unprocessable_entity
     end
   end
 

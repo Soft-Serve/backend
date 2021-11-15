@@ -22,7 +22,7 @@ class ItemSizesController < ApplicationController
     if @item_size
       render json: serialize(@item_size)
     else
-      render 'Not found', status: :not_found
+      render json: { errors: "No item sizes with id" }, status: :unprocessable_entity
     end
   end
 

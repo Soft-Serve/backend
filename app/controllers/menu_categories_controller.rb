@@ -22,7 +22,7 @@ class MenuCategoriesController < ApplicationController
     if @menu_category
       render json: serialize(@menu_category)
     else
-      render 'Not found', status: :not_found
+      render json: { errors: "No categories with id" }, status: :unprocessable_entity
     end
   end
 

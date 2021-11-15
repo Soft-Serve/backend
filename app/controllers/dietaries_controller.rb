@@ -22,7 +22,7 @@ class DietariesController < ApplicationController
     if @dietary
       render json: serialize(@dietary)
     else
-      render 'Not found', status: :not_found
+      render json: { errors: "No dietaries with id" }, status: :unprocessable_entity
     end
   end
 
