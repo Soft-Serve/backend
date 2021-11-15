@@ -14,7 +14,7 @@ class RegistrationsController < DeviseTokenAuth::RegistrationsController
   end
 
   private
-#test
+
   def find_restaurant
     @current_restaurant ||= current_user&.restaurant || nil
   end
