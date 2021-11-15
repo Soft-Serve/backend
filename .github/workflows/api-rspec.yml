@@ -1,5 +1,5 @@
 name: Rails Tests
-on: [push, pull_request]
+on: [push]
 jobs:
   rspec-test:
     name: RSpec
@@ -21,3 +21,8 @@ jobs:
           bundler exec rails db:migrate RAILS_ENV=test
       - name: Run tests
         run: bundler exec rake
+  services:
+    postgres:
+      image: postgres:latest
+      ports:
+        - 5432:5432
