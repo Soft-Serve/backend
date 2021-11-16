@@ -2,7 +2,7 @@ name: Rails Tests
 on: [push]
 jobs:
   rspec-test:
-    name: RSpec
+    name: Rspec
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
@@ -16,6 +16,13 @@ jobs:
           gem install bundler
           bundler install
       - name: Create database
+        env:
+          RAILS_ENV: test
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_PORT: 5432
+          RUBYOPT: "-W:no-deprecated -W:no-experimental"
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
@@ -24,5 +31,27 @@ jobs:
     services:
       postgres:
         image: postgres:latest
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
         ports:
           - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
+
+    - name: Build and test with rspec
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: localhost
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        RUBYOPT: "-W:no-deprecated -W:no-experimental"
+      run: |
+        bundle exec rake db:setup
+        bundle exec rspec
