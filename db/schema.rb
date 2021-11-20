@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_235647) do
+ActiveRecord::Schema.define(version: 2021_11_20_195431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2021_11_12_235647) do
     t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
   end
 
+  create_table "onboarding_checklists", force: :cascade do |t|
+    t.integer "step"
+    t.string "status"
+    t.bigint "restaurant_id", null: false
+    t.index ["restaurant_id"], name: "index_onboarding_checklists_on_restaurant_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo"
@@ -123,5 +130,6 @@ ActiveRecord::Schema.define(version: 2021_11_12_235647) do
   add_foreign_key "menu_categories", "menus", on_delete: :cascade
   add_foreign_key "menu_items", "menu_categories", on_delete: :cascade
   add_foreign_key "menus", "restaurants", on_delete: :cascade
+  add_foreign_key "onboarding_checklists", "restaurants", on_delete: :cascade
   add_foreign_key "users", "restaurants", on_delete: :cascade
 end
