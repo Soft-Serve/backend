@@ -43,7 +43,7 @@ DeviseTokenAuth.setup do |config|
   if ENV['RAILS_ENV'] == 'development'
     config.default_confirm_success_url = "http://localhost:3000/sign-in"
   else
-    config.default_confirm_success_url = "https://softserveapp.ondigitalocean.app/sign-in"
+    config.default_confirm_success_url = "https://softserveapp.com/sign-in"
   end
 
   # Makes it possible to change the headers names
