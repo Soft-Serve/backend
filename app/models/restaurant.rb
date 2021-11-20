@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
   has_many :dietaries
   has_many :users
   has_many :banners
-
+  has_many :menu_items, through: :menus
   # Validations
   validates_presence_of :name
   validates :colour, presence: true

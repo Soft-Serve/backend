@@ -19,7 +19,9 @@ class RestaurantPresenter
       city: item.city,
       province: item.province,
       postal_code: item.postal_code,
-      country: item.country
+      country: item.country,
+      has_items: item.menu_items.length > 0,
+      has_styles: item.banners.length > 0 || item.colour != 'red',
     }
   end
 end
