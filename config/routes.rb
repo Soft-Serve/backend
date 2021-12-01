@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :dietaries, only: %i[index]
     resources :menus, only: %i[index]
     resources :users, only: %i[index]
+    resources :banners
   end
 
   resources :dietaries, only: %i[show create update destroy]

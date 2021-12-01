@@ -947,6 +947,6 @@ DietaryInstance.create!(
   menu_item_id: toro_caviar.id
 )
 
-Banner.create!(header: "Happy hour", sub_header: "1/2 price drinks", restaurant_id: restaurant.id)
+Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Oliver & Bonacini", sub_header: "Bayview Village", restaurant_id: restaurant.id)
 
 puts 'All done 🎉🎉🎉'

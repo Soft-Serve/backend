@@ -14,6 +14,6 @@ class BannersCollection
   attr_reader :restaurant
 
   def scope_by_restaurant
-    restaurant.banner
+    restaurant.banners
   end
 end

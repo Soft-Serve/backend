@@ -1,4 +1,4 @@
-class Bannerresenter
+class BannerPresenter
   attr_reader :item
 
   def initialize(item)
@@ -10,7 +10,8 @@ class Bannerresenter
       id: item.id,
       header: item.header,
       sub_header: item.sub_header,
-      photo: item.photo
+      photo: item.photo,
+      restaurant_id: item.restaurant_id
     }
   end
 end
