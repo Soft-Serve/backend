@@ -21,7 +21,8 @@ class RestaurantPresenter
       postal_code: item.postal_code,
       country: item.country,
       has_items: item.menu_items.length > 0,
-      has_styles: item.banners.length > 0 || item.colour != 'red',
+      has_styles: item.banners.length > 0 || item.colour != 'red' || item.tint != 400 || item.logo,
+      onboarding_done: item.onboarding_done
     }
   end
 end

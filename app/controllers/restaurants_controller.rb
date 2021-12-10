@@ -81,7 +81,8 @@ class RestaurantsController < ApplicationController
       :city,
       :province,
       :postal_code,
-      :country
+      :country,
+      :onboarding_done
     )
   end
 end
