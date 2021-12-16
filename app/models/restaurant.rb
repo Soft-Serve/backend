@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
 
   DEFAULT_PRIMARY = 'red'.freeze
   DEFAULT_SECONDARY = 400
+  DEFAULT_FONT = 'Sans'
 
   # Relations
   has_many :menus
@@ -16,6 +17,7 @@ class Restaurant < ApplicationRecord
   validates_presence_of :name
   validates :colour, presence: true
   validates :tint, presence: true
+  validates :font, presence: true
   validates :currency, inclusion: { in: CURRENCIES.values }, allow_nil: false
 
   after_initialize :defaults
@@ -25,6 +27,7 @@ class Restaurant < ApplicationRecord
       self.currency = CURRENCIES[:cad]
       self.colour = DEFAULT_PRIMARY
       self.tint = DEFAULT_SECONDARY
+      self.font = DEFAULT_FONT
     end
   end
 end
