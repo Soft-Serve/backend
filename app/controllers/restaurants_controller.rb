@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :fetch, only: %i[show update destroy]
 
   def index
-    render json: (collection.filter.map { |menu| serialize(menu) })
+    render json: (collection.filter.map { |restaurant| serialize(restaurant) })
   end
 
   def create
@@ -82,7 +82,8 @@ class RestaurantsController < ApplicationController
       :province,
       :postal_code,
       :country,
-      :onboarding_done
+      :onboarding_done,
+      :font
     )
   end
 end

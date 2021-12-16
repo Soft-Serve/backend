@@ -13,6 +13,7 @@ class RestaurantPresenter
       currency: item.currency,
       colour: item.colour,
       tint: item.tint,
+      font: item.font,
       slug: item.slug,
       address_line_1: item.address_line_1,
       address_line_2: item.address_line_2,
