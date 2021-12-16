@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
 
   DEFAULT_PRIMARY = 'red'.freeze
   DEFAULT_SECONDARY = 400
-  DEFAULT_FONT = 'Sans'
+  DEFAULT_FONT = 'Quicksand'
 
   # Relations
   has_many :menus
