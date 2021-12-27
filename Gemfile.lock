@@ -201,8 +201,12 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
+    rubyXL (3.4.18)
+      nokogiri (>= 1.10.8)
+      rubyzip (>= 1.3.0)
     ruby_event_store-rspec (2.3.0)
       rspec (~> 3.0)
+    rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -265,6 +269,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.2.0)
   rspec-rails
+  rubyXL
   ruby_event_store-rspec
   sass-rails
   sdoc
