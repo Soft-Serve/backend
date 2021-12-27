@@ -11,4 +11,11 @@ class MenuCategory < ApplicationRecord
   # Validations
   validates_presence_of :name, :menu_id
   validates :category_type, inclusion: { in: TYPES.values }, allow_nil: false
+
+  after_initialize :defaults
+  def defaults
+    unless persisted?
+      self.category_type = TYPES[:food]
+    end
+  end
 end
