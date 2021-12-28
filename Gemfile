@@ -40,6 +40,8 @@ gem 'devise', '4.7.1' # Authentication
 
 gem 'devise_token_auth'
 
+gem 'rubyXL'
+
 gem 'puma'
 
 group :development, :test do
