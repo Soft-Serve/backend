@@ -13,8 +13,10 @@ restaurant =  Restaurant.create!(
   city: 'Toronto',
   province: 'ON',
   postal_code: 'M2K 1E6',
-  country: 'Canada'
-
+  country: 'Canada',
+  colour: "emerald",
+  tint: 900,
+  font: "Arima",
 )
 
 restaurant_2 =  Restaurant.create!(
@@ -26,6 +28,20 @@ restaurant_2 =  Restaurant.create!(
   province: 'ON',
   postal_code: 'M5V 2G3',
   country: 'Canada'
+)
+
+restaurant_3 =  Restaurant.create!(
+  name: 'Bella Ciao',
+  slug: 'bellaciao',
+  logo: 'bellaciao_1_ndl6ge.png',
+  address_line_1: '10 Blue Jays Way',
+  city: 'Toronto',
+  province: 'ON',
+  postal_code: 'M5V 2G3',
+  country: 'Canada',
+  colour: "rose",
+  tint: 800,
+  font: "Oswald",
 )
 
 
@@ -108,6 +124,32 @@ gus = User.new(
 
 gus.skip_confirmation!
 gus.save!
+
+kristine_3 = User.new(
+  first_name: 'Kristine',
+  last_name: 'McBride',
+  email: 'kristinelmcbride+bella@gmail.com',
+  uid: 'kristinelmcbride+bella@gmail.com',
+  restaurant_id: restaurant_3.id,
+  role: 'admin',
+  password: 'password'
+)
+
+kristine_3.skip_confirmation!
+kristine_3.save!
+
+shahyn_3 = User.new(
+  first_name: 'Shahyn',
+  last_name: 'Kamali',
+  email: 'shahynkamali+bella@gmail.com',
+  uid: 'shahynkamali+bella@gmail.com',
+  restaurant_id: restaurant_3.id,
+  role: 'admin',
+  password: 'password'
+)
+
+shahyn_3.skip_confirmation!
+shahyn_3.save!
 
 puts 'Creating menus 📄'
 
@@ -947,6 +989,7 @@ DietaryInstance.create!(
   menu_item_id: toro_caviar.id
 )
 
-Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", restaurant_id: restaurant.id)
+Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano' restaurant_id: restaurant_3.id)
+
 
 puts 'All done 🎉🎉🎉'
