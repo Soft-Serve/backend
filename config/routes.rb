@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[update]
 
   get :find_current_user, controller: "users"
+  resources :admins, only: :index
+
+  post :parse_csv, controller: "admins"
 
   resources :menus, only: %i[show create update destroy] do
     resources :menu_categories, only: %i[index]
