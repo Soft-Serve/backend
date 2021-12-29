@@ -1,0 +1,7 @@
+<h1>Upload CSV</h1>
+
+<%= form_for :csv, :url => parse_csv_path, method: 'post' do |f| %>
+  Restaurant ID: <%= f.text_field :restaurant_id %><br />
+  CSV : <%= f.file_field :file %><br />
+  <%= f.submit %>
+<% end %>

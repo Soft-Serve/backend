@@ -3,13 +3,15 @@ require 'rubyXL/convenience_methods'
 
 module Csv
   class Parser
-    def initialize(file_path:, restaurant_id:)
-      @file_path = file_path
+    def initialize(file:, restaurant_id:)
+      @file = file
       @restaurant_id = restaurant_id
     end
 
     def call
       create_menu_items!
+
+      ::Result::Ok.new(Restaurant.find(restaurant_id))
     rescue StandardError => e
       Result::Error.new(errors: [e.message])
     end
@@ -47,7 +49,7 @@ module Csv
     end
 
     def worksheet
-      @worksheet ||= RubyXL::Parser.parse(file_path)['Menu Items']
+      @worksheet ||= RubyXL::Parser.parse(file)['Menu Items']
     end
 
     def item_params(row)
@@ -97,6 +99,6 @@ module Csv
 
     private
 
-    attr_reader :file_path, :restaurant_id
+    attr_reader :file, :restaurant_id
   end
 end
