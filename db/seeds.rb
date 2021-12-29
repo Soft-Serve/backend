@@ -6,10 +6,10 @@ Restaurant.destroy_all
 puts 'Creating 2 new restaurants 🍽'
 
 restaurant =  Restaurant.create!(
-  name: 'Oliver & Bonacini',
-  slug: 'oliverandbonacini',
-  logo: 'o_b_jmfyov.png',
-  address_line_1: '2901 Bayview Ave',
+  name: 'Cafe Monty',
+  slug: 'cafemonty',
+  logo: 'Cafe_Monty_gyaplr.png',
+  address_line_1: '91 Bayview Ave',
   city: 'Toronto',
   province: 'ON',
   postal_code: 'M2K 1E6',
@@ -947,6 +947,6 @@ DietaryInstance.create!(
   menu_item_id: toro_caviar.id
 )
 
-Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Oliver & Bonacini", sub_header: "Bayview Village", restaurant_id: restaurant.id)
+Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", restaurant_id: restaurant.id)
 
 puts 'All done 🎉🎉🎉'
