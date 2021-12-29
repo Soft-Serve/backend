@@ -1,0 +1,28 @@
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% else %>
+  <h1><%= @restaurant.name %></h1>
+
+  <h2>Menus</h2>
+  <% @restaurant.menus.each do |menu| %>
+    <h3>Name: <%=  menu.name %></h3>
+    <h4> Categories: </h4>
+    <% menu.menu_categories.each do |category| %>
+      <h5><%= category.name %></h5>
+      <h5> Items: </h5>
+      <% category.menu_items.each do |item| %>
+        <p>Item: <%= item.to_json %></p>
+        <% item.dietary_instances.each do |instance| %>
+          <p><%= instance.dietary.name %>
+        <% end %>
+        <% item.item_sizes.each do |size| %>
+          <p><%= size.to_json %>
+        <% end %>
+        <br><br>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
