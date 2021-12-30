@@ -25,9 +25,9 @@ class Restaurant < ApplicationRecord
   def defaults
     unless persisted?
       self.currency = CURRENCIES[:cad]
-      self.colour = DEFAULT_PRIMARY
-      self.tint = DEFAULT_SECONDARY
-      self.font = DEFAULT_FONT
+      self.colour = self.colour || DEFAULT_PRIMARY
+      self.tint = self.tint || DEFAULT_SECONDARY
+      self.font = self.font || DEFAULT_FONT
     end
   end
 end
