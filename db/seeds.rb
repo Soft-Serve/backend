@@ -33,7 +33,7 @@ restaurant_2 =  Restaurant.create!(
 restaurant_3 =  Restaurant.create!(
   name: 'Bella Ciao',
   slug: 'bellaciao',
-  logo: 'bellaciao_1_ndl6ge.png',
+  logo: 'bellaciao_2_y4kifw.png',
   address_line_1: '10 Blue Jays Way',
   city: 'Toronto',
   province: 'ON',
