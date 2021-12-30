@@ -989,7 +989,7 @@ DietaryInstance.create!(
   menu_item_id: toro_caviar.id
 )
 
-Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano', restaurant_id: restaurant_3.id)
+Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano' restaurant_id: restaurant_3.id)
 
 
 puts 'All done 🎉🎉🎉'
