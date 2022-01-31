@@ -75,7 +75,8 @@ class BannersController < ApplicationController
     params.permit(
       :header,
       :sub_header,
-      :photo
+      :photo,
+      :restaurant_id
     )
   end
 end
