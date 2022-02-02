@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '>= 2.5', '< 3.1'
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
@@ -42,7 +42,9 @@ gem 'devise_token_auth'
 
 gem 'rubyXL'
 
-gem 'puma'
+gem 'puma', '5.6.1'
+
+gem 'net-smtp', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
