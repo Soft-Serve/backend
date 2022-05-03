@@ -16,7 +16,7 @@
 /tmp
 /.byebug_history
 .byebug_history
-
+_env.rb
 # Ignore ruby-version
 /.ruby-version
 .env
