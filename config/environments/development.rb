@@ -63,7 +63,8 @@ Rails.application.configure do
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
     :user_name          => ENV['EMAIL'],
-    :password           => ENV['PASSWORD']
+    :password           => ENV['PASSWORD'],
+    :enable_starttls_auto => true 
   }
 
   # Raises error for missing translations
