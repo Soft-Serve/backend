@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'restaurants#index'
 
-  mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: "registrations", passwords: "passwords", sessions: "sessions" }
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: "registrations", sessions: "sessions" }
 
   resources :restaurants, only: %i[show create update destroy] do
     resources :dietaries, only: %i[index]
