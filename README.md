@@ -10,8 +10,9 @@
 4. within your `soft-serve-app` folder you should now have a `backend` folder and a `frontend` folder. Both these folders will have their own git repository and production triggers. Changes should be pushed to their own repo
 5. cd in the `backend` folder and run `touch Dockerfile`
 6. copy the content below and paste it in the `Dockerfile`
+
 ```Docker
-FROM ruby:2.7.4-alpine
+FROM ruby:3.0.3-alpine
 RUN apk update && apk add bash build-base nodejs postgresql-dev tzdata
 
 RUN mkdir /backend
@@ -27,7 +28,8 @@ CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
 ```
 
 7. create docker-compose file by running `touch docker-compose.yml` in the `backend` folder
-8.  copy the content below and paste it in the `docker-compose.yml` file
+8. copy the content below and paste it in the `docker-compose.yml` file
+
 ```yml
 version: "3"
 
@@ -49,11 +51,15 @@ services:
       - "3091:3000"
     environment:
       - DATABASE_HOST=db
+    tty: true
+    stdin_open: true
 volumes:
   postgres:
 ```
+
 9. cd back in the root of `soft-serve app` and run `touch package.json`
 10. copy and paste the following content in the `package.json` file
+
 ```json
 {
   "name": "soft-serve",
@@ -72,17 +78,23 @@ volumes:
 ```
 
 ## Run the frontend
-1. in the root folder run `yarn install`
-2. then run `yarn frontend` a server should start up on `http://localhost:3000/`
+
+1. Make sure you have the right node version
+
+```
+nvm install 17.0.0
+nvm use 17.0.0
+```
+
+2. in the frontend folder run `yarn install`
+3. then run `yarn frontend` in the root a server should start up on `http://localhost:3000/`
 
 ## Run the backend
+
 1. in the root folder run `yarn build` this will build the docker container
 2. to start the backend server run `yarn backend`
 3. a server should appear on `http://localhost:3091/`
 
 ## Run cleanup
-1. once you have finished developing, it is good practice to clean up your docker containers by running `yarn cleanup` in the root folder 
 
-
-
-
+1. once you have finished developing, it is good practice to clean up your docker containers by running `yarn cleanup` in the root folder
