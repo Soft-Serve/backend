@@ -855,14 +855,14 @@ dairy = Dietary.create!(
   restaurant_id: restaurant.id
 )
 
-meat = Dietary.create!(
-  name: 'Meat',
+vegetarian = Dietary.create!(
+  name: 'Vegetarian',
   filter_name: 'Vegetarian',
   restaurant_id: restaurant.id
 )
 
-meat = Dietary.create!(
-  name: 'Animal by products',
+vegan = Dietary.create!(
+  name: 'Vegan',
   filter_name: 'Vegan',
   restaurant_id: restaurant.id
 )
@@ -885,8 +885,8 @@ dairy_2 = Dietary.create!(
   restaurant_id: restaurant_2.id
 )
 
-meat_2 = Dietary.create!(
-  name: 'Meat',
+vegetarian_2 = Dietary.create!(
+  name: 'Vegetarian',
   filter_name: 'Vegetarian',
   restaurant_id: restaurant_2.id
 )
@@ -894,6 +894,18 @@ meat_2 = Dietary.create!(
 soy_2 = Dietary.create!(
   name: 'Soy',
   filter_name: 'Soy free',
+  restaurant_id: restaurant_2.id
+)
+
+nut = Dietary.create!(
+  name: 'Nut',
+  filter_name: 'Nut free',
+  restaurant_id: restaurant_2.id
+)
+
+shellfish = Dietary.create!(
+  name: 'Shellfish',
+  filter_name: 'Shellfish free',
   restaurant_id: restaurant_2.id
 )
 
@@ -920,12 +932,12 @@ puts 'Creating dietary intances 🥖'
 )
 
  DietaryInstance.create!(
-  dietary_id: meat.id,
+  dietary_id: vegan.id,
   menu_item_id: club_sandwich.id
 )
 
  DietaryInstance.create!(
-  dietary_id: meat.id,
+  dietary_id: vegan.id,
   menu_item_id: burger.id
 )
 
