@@ -7,6 +7,7 @@ class MenuCategory < ApplicationRecord
   # Relations
   belongs_to :menu
   has_many :menu_items
+  has_many :promotion_categories
 
   # Validations
   validates_presence_of :name, :menu_id
