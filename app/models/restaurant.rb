@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
   has_many :menus
   has_many :dietaries
   has_many :users
-  has_many :banners
+  has_one :banner
   has_many :menu_items, through: :menus
   has_many :promotions
   # Validations

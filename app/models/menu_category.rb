@@ -15,7 +15,7 @@ class MenuCategory < ApplicationRecord
 
   after_initialize :defaults
   def defaults
-    unless persisted?
+    unless self.category_type
       self.category_type = TYPES[:food]
     end
   end
