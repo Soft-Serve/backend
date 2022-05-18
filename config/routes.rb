@@ -31,4 +31,8 @@ Rails.application.routes.draw do
     resources :item_sizes, only: %i[index show create update destroy]
     resources :dietary_instances, only: %i[index create destroy]
   end
+
+  resources :promotions do
+    resources :promotion_categories
+  end
 end
