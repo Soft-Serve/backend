@@ -1005,8 +1005,8 @@ Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Piz
 
 PromotionInteractor::Create.new(
   author: kristine, 
-  category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 0.5 }] }, 
-  promotion_params: { name: "Happy Hour", description: "1/2 price cocktails", start_time: start_time = Time.new(2022, 01, 01, 17, 0, 0), end_time: start_time = Time.new(2022, 01, 01, 22, 0, 0), days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
+  category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 50 }] }, 
+  promotion_params: { name: "Happy Hour", description: "1/2 price cocktails", start_time: Time.new(2022, 01, 01, 17, 0, 0), end_time: Time.new(2022, 01, 01, 22, 0, 0), days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
 ).call
 
 puts 'All done 🎉🎉🎉'

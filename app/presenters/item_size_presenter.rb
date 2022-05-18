@@ -9,32 +9,31 @@ class ItemSizePresenter
     {
       id: item.id,
       price: item.price,
-      promo_prize: promo_price,
+      promo_price: promo_price,
       unit: item.unit,
       menu_item_id: item.menu_item_id
     }
   end
-
+    
   def promo_price
-    nil
-    # return nil unless promotion_category
+    return nil unless promotion_category && promotion&.active?
 
-    # if promotion_category.unit == 'percentage'
-    #   item.price * promotion_category.amount
-    # else
-    #   item.price - promotion_category.amount
-    # end
+    if promotion_category.unit == 'percentage'
+      item.price * (promotion_category.discount / 100.00)
+    else
+      item.price - promotion_category.discount
+    end
   end
 
-  # def category 
-  #   @category ||= item.menu_item.menu_category
-  # end
+  def category 
+    @category ||= item.menu_item.menu_category
+  end
 
-  # def active_promotion
-  #   @active_promotion ||= category.active_promotions.first
-  # end
+  def promotion
+    @promotion ||= promotion_category&.promotion
+  end
 
-  # def promotion_category
-  #   @promotion_category ||= PromotionCategory.find_by(promotion: active_promotion, category: category)
-  # end
+  def promotion_category
+    @promotion_category ||= category.promotion_categories&.first
+  end
 end
