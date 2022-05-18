@@ -1,4 +1,4 @@
-class ItemSizePresenter
+class PromotionPresenter
   attr_reader :item
 
   def initialize(item)
