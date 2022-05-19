@@ -7,7 +7,6 @@ class RestaurantsController < ApplicationController
 
   def create
     result = RestaurantInteractor::Create.new(
-      author: current_user,
       params: strong_params
     ).call
 

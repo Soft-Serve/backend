@@ -20,7 +20,7 @@ class RegistrationsController < DeviseTokenAuth::RegistrationsController
   end
 
   def restaurant
-    @current_restaurant || Restaurant.create!(restaurant_params)
+    @current_restaurant || RestaurantInteractor::Create.new(params: restaurant_params).call.value
   end
 
   def user_params
