@@ -12,7 +12,7 @@ class PromotionPresenter
       description: item.description,
       start_time: item.start_time,
       end_time: item.end_time,
-      days: item.days.split(','),
+      days: item.days,
       restaurant_id: item.restaurant_id
     }
   end
