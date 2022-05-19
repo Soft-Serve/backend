@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :menus, only: %i[index]
     resources :users, only: %i[index]
     resources :banners
+    resources :promotions, only: %i[index]
   end
 
   resources :dietaries, only: %i[show create update destroy]
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
     resources :dietary_instances, only: %i[index create destroy]
   end
 
-  resources :promotions do
+  resources :promotions, only: %i[show create update destroy] do
     resources :promotion_categories
   end
 end
