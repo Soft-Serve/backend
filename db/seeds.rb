@@ -5,45 +5,50 @@ Restaurant.destroy_all
 
 puts 'Creating 2 new restaurants 🍽'
 
-restaurant =  Restaurant.create!(
-  name: 'Cafe Monty',
-  slug: 'cafemonty',
-  logo: 'Cafe_Monty_gyaplr.png',
-  address_line_1: '91 Bayview Ave',
-  city: 'Toronto',
-  province: 'ON',
-  postal_code: 'M2K 1E6',
-  country: 'Canada',
-  colour: "emerald",
-  tint: 900,
-  font: "Arima",
-)
+restaurant = RestaurantInteractor::Create.new(
+  params: {
+    name: 'Cafe Monty',
+    slug: 'cafemonty',
+    logo: 'Cafe_Monty_gyaplr.png',
+    address_line_1: '91 Bayview Ave',
+    city: 'Toronto',
+    province: 'ON',
+    postal_code: 'M2K 1E6',
+    country: 'Canada',
+    colour: "emerald",
+    tint: 900,
+    font: "Arima",
+  }
+).call.value
 
-restaurant_2 =  Restaurant.create!(
-  name: 'Akira Back',
-  slug: 'akiraback',
-  logo: 'akira-back-squarelogo-1530004610726_fjqmc2.png',
-  address_line_1: '80 Blue Jays Way',
-  city: 'Toronto',
-  province: 'ON',
-  postal_code: 'M5V 2G3',
-  country: 'Canada'
-)
+restaurant_2 = RestaurantInteractor::Create.new(
+  params: {
+    name: 'Akira Back',
+    slug: 'akiraback',
+    logo: 'akira-back-squarelogo-1530004610726_fjqmc2.png',
+    address_line_1: '80 Blue Jays Way',
+    city: 'Toronto',
+    province: 'ON',
+    postal_code: 'M5V 2G3',
+    country: 'Canada'
+  }
+).call.value
 
-restaurant_3 =  Restaurant.create!(
-  name: 'Bella Ciao',
-  slug: 'bellaciao',
-  logo: 'bellaciao_2_y4kifw.png',
-  address_line_1: '10 Blue Jays Way',
-  city: 'Toronto',
-  province: 'ON',
-  postal_code: 'M5V 2G3',
-  country: 'Canada',
-  colour: "rose",
-  tint: 800,
-  font: "Oswald",
-)
-
+restaurant_3 = RestaurantInteractor::Create.new(
+  params: {
+    name: 'Bella Ciao',
+    slug: 'bellaciao',
+    logo: 'bellaciao_2_y4kifw.png',
+    address_line_1: '10 Blue Jays Way',
+    city: 'Toronto',
+    province: 'ON',
+    postal_code: 'M5V 2G3',
+    country: 'Canada',
+    colour: "rose",
+    tint: 800,
+    font: "Oswald",
+  }
+).call.value
 
 puts 'Creating 3 admins for each restaurant 👩🏽‍💻'
 
@@ -841,165 +846,165 @@ house_salad = MenuItem.create!(
   menu_item_id: house_salad.id
 )
 
-puts 'Creating dietaries 🥖'
+# puts 'Creating dietaries 🥖'
 
-gluten = Dietary.create!(
-  name: 'Gluten',
-  filter_name: 'Gluten free',
-  restaurant_id: restaurant.id
-)
+# gluten = Dietary.create!(
+#   name: 'Gluten',
+#   filter_name: 'Gluten free',
+#   restaurant_id: restaurant.id
+# )
 
-dairy = Dietary.create!(
-  name: 'Lactose',
-  filter_name: 'Lactose free',
-  restaurant_id: restaurant.id
-)
+# dairy = Dietary.create!(
+#   name: 'Lactose',
+#   filter_name: 'Lactose free',
+#   restaurant_id: restaurant.id
+# )
 
-vegetarian = Dietary.create!(
-  name: 'Vegetarian',
-  filter_name: 'Vegetarian',
-  restaurant_id: restaurant.id
-)
+# vegetarian = Dietary.create!(
+#   name: 'Vegetarian',
+#   filter_name: 'Vegetarian',
+#   restaurant_id: restaurant.id
+# )
 
-vegan = Dietary.create!(
-  name: 'Vegan',
-  filter_name: 'Vegan',
-  restaurant_id: restaurant.id
-)
+# vegan = Dietary.create!(
+#   name: 'Vegan',
+#   filter_name: 'Vegan',
+#   restaurant_id: restaurant.id
+# )
 
-soy = Dietary.create!(
-  name: 'Soy',
-  filter_name: 'Soy free',
-  restaurant_id: restaurant.id
-)
+# soy = Dietary.create!(
+#   name: 'Soy',
+#   filter_name: 'Soy free',
+#   restaurant_id: restaurant.id
+# )
 
-gluten_2 = Dietary.create!(
-  name: 'Gluten',
-  filter_name: 'Gluten free',
-  restaurant_id: restaurant_2.id
-)
+# gluten_2 = Dietary.create!(
+#   name: 'Gluten',
+#   filter_name: 'Gluten free',
+#   restaurant_id: restaurant_2.id
+# )
 
-dairy_2 = Dietary.create!(
-  name: 'Lactose',
-  filter_name: 'Lactose free',
-  restaurant_id: restaurant_2.id
-)
+# dairy_2 = Dietary.create!(
+#   name: 'Lactose',
+#   filter_name: 'Lactose free',
+#   restaurant_id: restaurant_2.id
+# )
 
-vegetarian_2 = Dietary.create!(
-  name: 'Vegetarian',
-  filter_name: 'Vegetarian',
-  restaurant_id: restaurant_2.id
-)
+# vegetarian_2 = Dietary.create!(
+#   name: 'Vegetarian',
+#   filter_name: 'Vegetarian',
+#   restaurant_id: restaurant_2.id
+# )
 
-soy_2 = Dietary.create!(
-  name: 'Soy',
-  filter_name: 'Soy free',
-  restaurant_id: restaurant_2.id
-)
+# soy_2 = Dietary.create!(
+#   name: 'Soy',
+#   filter_name: 'Soy free',
+#   restaurant_id: restaurant_2.id
+# )
 
-nut = Dietary.create!(
-  name: 'Nut',
-  filter_name: 'Nut free',
-  restaurant_id: restaurant_2.id
-)
+# nut = Dietary.create!(
+#   name: 'Nut',
+#   filter_name: 'Nut free',
+#   restaurant_id: restaurant_2.id
+# )
 
-shellfish = Dietary.create!(
-  name: 'Shellfish',
-  filter_name: 'Shellfish free',
-  restaurant_id: restaurant_2.id
-)
+# shellfish = Dietary.create!(
+#   name: 'Shellfish',
+#   filter_name: 'Shellfish free',
+#   restaurant_id: restaurant_2.id
+# )
 
-puts 'Creating dietary intances 🥖'
+# puts 'Creating dietary intances 🥖'
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: margarita_pizza.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: margarita_pizza.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: salami_pizza_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: salami_pizza_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: margarita_pizza_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: margarita_pizza_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: salami_pizza.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: salami_pizza.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: vegan.id,
-  menu_item_id: club_sandwich.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: vegan.id,
+#   menu_item_id: club_sandwich.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: vegan.id,
-  menu_item_id: burger.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: vegan.id,
+#   menu_item_id: burger.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: soy.id,
-  menu_item_id: mac_and_cheese.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: soy.id,
+#   menu_item_id: mac_and_cheese.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: soy.id,
-  menu_item_id: mac_and_cheese_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: soy.id,
+#   menu_item_id: mac_and_cheese_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: mac_and_cheese.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: mac_and_cheese.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: mac_and_cheese_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: mac_and_cheese_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: margarita_pizza.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: margarita_pizza.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: salami_pizza_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: salami_pizza_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: margarita_pizza_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: margarita_pizza_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: dairy.id,
-  menu_item_id: salami_pizza.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: dairy.id,
+#   menu_item_id: salami_pizza.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: potstickers_lunch.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: potstickers_lunch.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: gluten.id,
-  menu_item_id: potstickers_dinner.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: gluten.id,
+#   menu_item_id: potstickers_dinner.id
+# )
 
-DietaryInstance.create!(
-  dietary_id: gluten_2.id,
-  menu_item_id: tuna_pizza.id
-)
+# DietaryInstance.create!(
+#   dietary_id: gluten_2.id,
+#   menu_item_id: tuna_pizza.id
+# )
 
- DietaryInstance.create!(
-  dietary_id: soy_2.id,
-  menu_item_id: toro_caviar.id
-)
+#  DietaryInstance.create!(
+#   dietary_id: soy_2.id,
+#   menu_item_id: toro_caviar.id
+# )
 
 Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano', restaurant_id: restaurant_3.id)
 
