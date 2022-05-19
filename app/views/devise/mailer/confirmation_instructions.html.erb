@@ -83,12 +83,22 @@
                             <td align="left" style="padding:0;Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px">
                             <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                 <tr>
-                                    <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                                    <td align="center" valign="top" style="padding:0;Margin:0;width:560px;padding-bottom:10px">
                                         <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:5px" role="presentation">
                                         <tr>
+<<<<<<< Updated upstream
                                           <%= link_to confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe, :class => "button" do %>
                                             <td align="center" class="esd-block-button es-p10t es-p10b border-left-width: 30px; border-right-width: 30px; border-radius: 6px; background: #f87171; border-color: #f87171;"><span class="es-button-border " style="border-radius: 6px; background: #f87171;">CONFIRM YOUR ACCOUNT</span></td>
                                           <% end %>
+=======
+                                            <td class="esd-block-button es-p10t es-p10b" align="center">
+                                              <span class="border-left-width: 30px; border-right-width: 30px; border-radius: 6px; background: #f87171; border-color: #f87171; es-button-border" style="border-radius: 6px; background: #f87171;">
+                                                <a class="es-button" target="_blank" style="background: #f87171; border-color: #f87171;">
+                                                  <%= link_to "CONFIRM YOUR ACCOUNT", confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe, class: "button" %>
+                                                </a>
+                                              </span>
+                                            </td>
+>>>>>>> Stashed changes
                                         </tr>
                                         <tr>
                                             <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-top:10px">
