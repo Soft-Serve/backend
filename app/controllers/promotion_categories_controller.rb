@@ -60,7 +60,7 @@ class PromotionCategoriesController < ApplicationController
   end
 
   def promotion
-    @promotion ||= MenuItem.find_by(id: params[:promotion_id])
+    @promotion ||= Promotion.find_by(id: params[:promotion_id])
   end
 
   def collection
