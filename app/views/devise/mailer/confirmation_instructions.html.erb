@@ -89,10 +89,17 @@
                                             <td class="esd-block-button es-p10t es-p10b" align="center">
                                               <span class="border-left-width: 30px; border-right-width: 30px; border-radius: 6px; background: #f87171; border-color: #f87171; es-button-border" style="border-radius: 6px; background: #f87171;">
                                                 <a class="es-button" target="_blank" style="background: #f87171; border-color: #f87171;">
-                                                  <%= link_to "CONFIRM YOUR ACCOUNT", confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe, class: "button" %>
+                                                  <%= button_to "CONFIRM YOUR ACCOUNT", confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe, class: "button" %>
                                                 </a>
                                               </span>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                          <td class="esd-block-button es-p10t es-p10b" align="center">
+                                              <a class="es-button" target="_blank" style="background: #f87171; border-color: #f87171;">
+                                                <%= link_to "CONFIRM YOUR ACCOUNT", confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe, style: "border-left-width: 30px; border-right-width: 30px; border-radius: 6px; background: #f87171; border-color: #f87171; es-button-border", class: "button" %>
+                                              </a>
+                                          </td>
                                         </tr>
                                         </table>
                                     </td>
