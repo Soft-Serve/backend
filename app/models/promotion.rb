@@ -2,6 +2,7 @@ class Promotion < ApplicationRecord
   # Relations
   has_many :menu_categories
   belongs_to :restaurant
+  has_many :promotion_categories
 
   # Validations
   validates_presence_of :start_time, :end_time, :name, :days
