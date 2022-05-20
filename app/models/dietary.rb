@@ -10,8 +10,7 @@ class Dietary < ApplicationRecord
   	{ name: "Peanuts", filter_name: "Peanut free" },
   	{ name: "Seafood", filter_name: "Seafood free" },
     { name: "Vegan", filter_name: "Vegan" },
-  	{ name: "Vegetarian", filter_name: "Vegetarian" },
-  	{ name: "Halal", filter_name: "Halal" }
+  	{ name: "Vegetarian", filter_name: "Vegetarian" }
 ].freeze
 
   # Relations
