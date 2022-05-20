@@ -21,19 +21,6 @@ restaurant = RestaurantInteractor::Create.new(
   }
 ).call.value
 
-restaurant_2 = RestaurantInteractor::Create.new(
-  params: {
-    name: 'Akira Back',
-    slug: 'akiraback',
-    logo: 'akira-back-squarelogo-1530004610726_fjqmc2.png',
-    address_line_1: '80 Blue Jays Way',
-    city: 'Toronto',
-    province: 'ON',
-    postal_code: 'M5V 2G3',
-    country: 'Canada'
-  }
-).call.value
-
 restaurant_3 = RestaurantInteractor::Create.new(
   params: {
     name: 'Bella Ciao',
@@ -51,45 +38,6 @@ restaurant_3 = RestaurantInteractor::Create.new(
 ).call.value
 
 puts 'Creating 3 admins for each restaurant 👩🏽‍💻'
-
-kristine_2 = User.new(
-  first_name: 'Kristine',
-  last_name: 'McBride',
-  email: 'kristinelmcbride+akira@gmail.com',
-  uid: 'kristinelmcbride+akira@gmail.com',
-  restaurant_id: restaurant_2.id,
-  role: 'admin',
-  password: 'password'
-)
-
-kristine_2.skip_confirmation!
-kristine_2.save!
-
-shahyn_2 = User.new(
-  first_name: 'Shahyn',
-  last_name: 'Kamali',
-  email: 'shahynkamali+akira@gmail.com',
-  uid: 'shahynkamali+akira@gmail.com',
-  restaurant_id: restaurant_2.id,
-  role: 'admin',
-  password: 'password'
-)
-
-shahyn_2.skip_confirmation!
-shahyn_2.save!
-
-gus_2 = User.new(
-  first_name: 'Gus',
-  last_name: 'Richardson',
-  email: 'gusrichardson1+akira@gmail.com',
-  uid: 'gusrichardson1+akira@gmail.com',
-  restaurant_id: restaurant_2.id,
-  role: 'admin',
-  password: 'password'
-)
-
-gus_2.skip_confirmation!
-gus_2.save!
 
 kristine = User.new(
   first_name: 'Kristine',
@@ -156,6 +104,20 @@ shahyn_3 = User.new(
 shahyn_3.skip_confirmation!
 shahyn_3.save!
 
+puts 'Fetching dietaries 🥖'
+
+gluten = Dietary.find_by(name: 'Gluten', restaurant_id: restaurant.id)
+soy = Dietary.find_by(name: 'Soy', restaurant_id: restaurant.id)
+lactose = Dietary.find_by(name: 'Lactose', restaurant_id: restaurant.id)
+tree_nuts = Dietary.find_by(name: 'Tree nuts', restaurant_id: restaurant.id)
+shellfish = Dietary.find_by(name: 'Shellfish', restaurant_id: restaurant.id)
+sesame = Dietary.find_by(name: 'Sesame', restaurant_id: restaurant.id)
+eggs = Dietary.find_by(name: 'Eggs', restaurant_id: restaurant.id)
+peanuts = Dietary.find_by(name: 'Peanuts', restaurant_id: restaurant.id)
+seafood = Dietary.find_by(name: 'Seafood', restaurant_id: restaurant.id)
+vegan = Dietary.find_by(name: 'Vegan', restaurant_id: restaurant.id)
+vegetarian = Dietary.find_by(name: 'Vegetarian', restaurant_id: restaurant.id)
+
 puts 'Creating menus 📄'
 
 lunch = Menu.create!(
@@ -176,21 +138,6 @@ dessert = Menu.create!(
 drinks = Menu.create!(
   name: 'Drinks menu',
   restaurant_id: restaurant.id
-)
-
-dinner_2 = Menu.create!(
-  name: 'Dinner',
-  restaurant_id: restaurant_2.id
-)
-
-dessert_2 = Menu.create!(
-  name: 'Dessert',
-  restaurant_id: restaurant_2.id
-)
-
-beverages = Menu.create!(
-  name: 'Beverages',
-  restaurant_id: restaurant_2.id
 )
 
 
@@ -250,31 +197,7 @@ soft_drinks = MenuCategory.create!(
   menu_id: drinks.id
 )
 
-cold_share = MenuCategory.create!(
-  name: 'Cold share',
-  category_type: 'food',
-  menu_id: dinner_2.id
-)
-
-hot_share = MenuCategory.create!(
-  name: 'Hot share',
-  category_type: 'food',
-  menu_id: dinner_2.id
-)
-
-salads = MenuCategory.create!(
-  name: 'Salads',
-  category_type: 'food',
-  menu_id: dinner_2.id
-)
-
-mains_2 = MenuCategory.create!(
-  name: 'Mains',
-  category_type: 'food',
-  menu_id: dinner_2.id
-)
-
-puts 'Creating menus items with item sizes 🥘'
+puts 'Creating menus items with item sizes & dietaries 🥘'
 
 potstickers_lunch = MenuItem.create!(
   name: 'Potstickers',
@@ -283,6 +206,9 @@ potstickers_lunch = MenuItem.create!(
   menu_category_id: lunch_apps.id,
   photo: 'potstickers1_uhbqsc.jpg'
 )
+
+DietaryInstance.create!(menu_item: potstickers_lunch, dietary: soy)
+DietaryInstance.create!(menu_item: potstickers_lunch, dietary: gluten)
 
  ItemSize.create!(
   price: 9.00,
@@ -297,6 +223,9 @@ potstickers_dinner =  MenuItem.create!(
   photo: 'potstickers1_uhbqsc.jpg'
 )
 
+DietaryInstance.create!(menu_item: potstickers_dinner, dietary: soy)
+DietaryInstance.create!(menu_item: potstickers_dinner, dietary: gluten)
+
  ItemSize.create!(
   price: 9.00,
   unit: '12',
@@ -309,6 +238,9 @@ garden_salad_lunch =  MenuItem.create!(
   menu_category_id: lunch_apps.id,
   photo: 'nadine-primeau--ftWfohtjNw-unsplash_pmknmk.jpg'
 )
+DietaryInstance.create!(menu_item: garden_salad_lunch, dietary: vegan)
+DietaryInstance.create!(menu_item: garden_salad_lunch, dietary: tree_nuts)
+DietaryInstance.create!(menu_item: garden_salad_lunch, dietary: peanuts)
 
  ItemSize.create!(
   price: 9.00,
@@ -323,6 +255,10 @@ garden_salad_dinner =  MenuItem.create!(
   photo: 'nadine-primeau--ftWfohtjNw-unsplash_pmknmk.jpg'
 )
 
+DietaryInstance.create!(menu_item: garden_salad_dinner, dietary: vegan)
+DietaryInstance.create!(menu_item: garden_salad_dinner, dietary: tree_nuts)
+DietaryInstance.create!(menu_item: garden_salad_dinner, dietary: peanuts)
+
  ItemSize.create!(
   price: 9.00,
   unit: 'large',
@@ -336,6 +272,9 @@ mushroom_soup =  MenuItem.create!(
   photo: 'mushroom_soup.webp'
 )
 
+DietaryInstance.create!(menu_item: mushroom_soup, dietary: vegetarian)
+DietaryInstance.create!(menu_item: mushroom_soup, dietary: lactose)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: mushroom_soup.id
@@ -347,6 +286,9 @@ tomato_soup =  MenuItem.create!(
   menu_category_id: lunch_apps.id,
   photo: 'jennifer-burk-8uC3b-unoSE-unsplash_aknxvr.jpg'
 )
+
+DietaryInstance.create!(menu_item: mushroom_soup, dietary: vegetarian)
+DietaryInstance.create!(menu_item: mushroom_soup, dietary: lactose)
 
  ItemSize.create!(
   price: 9.00,
@@ -360,6 +302,11 @@ mac_and_cheese_lunch =  MenuItem.create!(
   photo: 'ronaldo-de-oliveira-tf2dNkqagyc-unsplash_zigoko.jpg'
 )
 
+DietaryInstance.create!(menu_item: mac_and_cheese_lunch, dietary: gluten)
+DietaryInstance.create!(menu_item: mac_and_cheese_lunch, dietary: lactose)
+DietaryInstance.create!(menu_item: mac_and_cheese_lunch, dietary: eggs)
+
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: mac_and_cheese_lunch.id
@@ -372,6 +319,10 @@ mac_and_cheese =  MenuItem.create!(
   photo: 'ronaldo-de-oliveira-tf2dNkqagyc-unsplash_zigoko.jpg'
 )
 
+DietaryInstance.create!(menu_item: mac_and_cheese, dietary: gluten)
+DietaryInstance.create!(menu_item: mac_and_cheese, dietary: lactose)
+DietaryInstance.create!(menu_item: mac_and_cheese, dietary: eggs)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: mac_and_cheese.id
@@ -383,12 +334,14 @@ margarita_pizza_lunch =  MenuItem.create!(
   menu_category_id: lunch_mains.id,
   photo: 'pierre-antoine-caisso-3z1ifS7ERVY-unsplash_pnf8dv.jpg'
 )
+DietaryInstance.create!(menu_item: margarita_pizza_lunch, dietary: gluten)
+DietaryInstance.create!(menu_item: margarita_pizza_lunch, dietary: lactose)
+DietaryInstance.create!(menu_item: margarita_pizza_lunch, dietary: vegetarian)
 
  ItemSize.create!(
   price: 9.00,
   menu_item_id: margarita_pizza_lunch.id
 )
-
 
 margarita_pizza =  MenuItem.create!(
   name: 'Margarita Pizza',
@@ -396,6 +349,10 @@ margarita_pizza =  MenuItem.create!(
   menu_category_id: dinner_mains.id,
   photo: 'pierre-antoine-caisso-3z1ifS7ERVY-unsplash_pnf8dv.jpg'
 )
+
+DietaryInstance.create!(menu_item: margarita_pizza, dietary: gluten)
+DietaryInstance.create!(menu_item: margarita_pizza, dietary: lactose)
+DietaryInstance.create!(menu_item: margarita_pizza, dietary: vegetarian)
 
  ItemSize.create!(
   price: 9.00,
@@ -409,6 +366,9 @@ salami_pizza_lunch =  MenuItem.create!(
   photo: 'engin-akyurt-IfAb0bjhHlc-unsplash_rpm5wd.jpg'
 )
 
+DietaryInstance.create!(menu_item: salami_pizza_lunch, dietary: gluten)
+DietaryInstance.create!(menu_item: salami_pizza_lunch, dietary: lactose)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: salami_pizza_lunch.id
@@ -420,6 +380,9 @@ salami_pizza =  MenuItem.create!(
   menu_category_id: lunch_mains.id,
   photo: 'engin-akyurt-IfAb0bjhHlc-unsplash_rpm5wd.jpg'
 )
+
+DietaryInstance.create!(menu_item: salami_pizza, dietary: gluten)
+DietaryInstance.create!(menu_item: salami_pizza, dietary: lactose)
 
  ItemSize.create!(
   price: 9.00,
@@ -433,6 +396,11 @@ club_sandwich =  MenuItem.create!(
   photo: 'suea-sivilaisith-foHj73zCV3Y-unsplash_xsdlc3.jpg'
 )
 
+DietaryInstance.create!(menu_item: club_sandwich, dietary: gluten)
+DietaryInstance.create!(menu_item: club_sandwich, dietary: lactose)
+DietaryInstance.create!(menu_item: club_sandwich, dietary: eggs)
+DietaryInstance.create!(menu_item: club_sandwich, dietary: soy)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: club_sandwich.id
@@ -444,6 +412,9 @@ burger =  MenuItem.create!(
   menu_category_id: lunch_mains.id,
   photo: 'amirali-mirhashemian-Tht2Sdwqey8-unsplash_ypahgc.jpg'
 )
+
+DietaryInstance.create!(menu_item: burger, dietary: gluten)
+DietaryInstance.create!(menu_item: burger, dietary: lactose)
 
  ItemSize.create!(
   price: 9.00,
@@ -469,6 +440,9 @@ salmon = MenuItem.create!(
   photo: 'sebastian-coman-photography-Co-T6odt0es-unsplash_n8oxnp.jpg'
 )
 
+DietaryInstance.create!(menu_item: salmon, dietary: seafood)
+DietaryInstance.create!(menu_item: salmon, dietary: soy)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: salmon.id
@@ -480,6 +454,9 @@ gnocchi = MenuItem.create!(
   menu_category_id: dinner_mains.id,
   photo: 'sebastian-coman-photography-Zmhi-OMDVbw-unsplash_p7bhqn.jpg'
 )
+
+DietaryInstance.create!(menu_item: gnocchi, dietary: vegan)
+DietaryInstance.create!(menu_item: gnocchi, dietary: sesame)
 
  ItemSize.create!(
   price: 9.00,
@@ -505,6 +482,10 @@ brownie = MenuItem.create!(
   photo: 'alena-ganzhela-MONzTP2XxUE-unsplash_jypjog.jpg'
 )
 
+DietaryInstance.create!(menu_item: brownie, dietary: eggs)
+DietaryInstance.create!(menu_item: brownie, dietary: gluten)
+DietaryInstance.create!(menu_item: brownie, dietary: lactose)
+
  ItemSize.create!(
   price: 9.00,
   menu_item_id: brownie.id
@@ -516,6 +497,9 @@ creme_brulee = MenuItem.create!(
   menu_category_id: desserts.id,
   photo: 'alex-munsell-wiTWDYLURr8-unsplash_lua4p5.jpg'
 )
+
+DietaryInstance.create!(menu_item: creme_brulee, dietary: lactose)
+DietaryInstance.create!(menu_item: creme_brulee, dietary: eggs)
 
  ItemSize.create!(
   price: 9.00,
@@ -812,199 +796,6 @@ nestea = MenuItem.create!(
   price: 2.50,
   menu_item_id: nestea.id
 )
-
-tuna_pizza = MenuItem.create!(
-  name: 'Tuna pizza',
-  description: 'Micro Shiso, Truffle Oil',
-  menu_category_id: cold_share.id
-)
-
- ItemSize.create!(
-  price: 23,
-  menu_item_id: tuna_pizza.id
-)
-
-toro_caviar = MenuItem.create!(
-  name: 'Toro caviar',
-  description: 'Kochujang Miso, Caviar',
-  menu_category_id: cold_share.id
-)
-
- ItemSize.create!(
-  price: 45,
-  menu_item_id: toro_caviar.id
-)
-
-house_salad = MenuItem.create!(
-  name: 'House',
-  description: 'Mixed Greens, Ginger Dressing',
-  menu_category_id: salads.id
-)
-
- ItemSize.create!(
-  price: 12,
-  menu_item_id: house_salad.id
-)
-
-# puts 'Creating dietaries 🥖'
-
-# gluten = Dietary.create!(
-#   name: 'Gluten',
-#   filter_name: 'Gluten free',
-#   restaurant_id: restaurant.id
-# )
-
-# dairy = Dietary.create!(
-#   name: 'Lactose',
-#   filter_name: 'Lactose free',
-#   restaurant_id: restaurant.id
-# )
-
-# vegetarian = Dietary.create!(
-#   name: 'Vegetarian',
-#   filter_name: 'Vegetarian',
-#   restaurant_id: restaurant.id
-# )
-
-# vegan = Dietary.create!(
-#   name: 'Vegan',
-#   filter_name: 'Vegan',
-#   restaurant_id: restaurant.id
-# )
-
-# soy = Dietary.create!(
-#   name: 'Soy',
-#   filter_name: 'Soy free',
-#   restaurant_id: restaurant.id
-# )
-
-# gluten_2 = Dietary.create!(
-#   name: 'Gluten',
-#   filter_name: 'Gluten free',
-#   restaurant_id: restaurant_2.id
-# )
-
-# dairy_2 = Dietary.create!(
-#   name: 'Lactose',
-#   filter_name: 'Lactose free',
-#   restaurant_id: restaurant_2.id
-# )
-
-# vegetarian_2 = Dietary.create!(
-#   name: 'Vegetarian',
-#   filter_name: 'Vegetarian',
-#   restaurant_id: restaurant_2.id
-# )
-
-# soy_2 = Dietary.create!(
-#   name: 'Soy',
-#   filter_name: 'Soy free',
-#   restaurant_id: restaurant_2.id
-# )
-
-# nut = Dietary.create!(
-#   name: 'Nut',
-#   filter_name: 'Nut free',
-#   restaurant_id: restaurant_2.id
-# )
-
-# shellfish = Dietary.create!(
-#   name: 'Shellfish',
-#   filter_name: 'Shellfish free',
-#   restaurant_id: restaurant_2.id
-# )
-
-# puts 'Creating dietary intances 🥖'
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: margarita_pizza.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: salami_pizza_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: margarita_pizza_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: salami_pizza.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: vegan.id,
-#   menu_item_id: club_sandwich.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: vegan.id,
-#   menu_item_id: burger.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: soy.id,
-#   menu_item_id: mac_and_cheese.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: soy.id,
-#   menu_item_id: mac_and_cheese_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: mac_and_cheese.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: mac_and_cheese_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: margarita_pizza.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: salami_pizza_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: margarita_pizza_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: dairy.id,
-#   menu_item_id: salami_pizza.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: potstickers_lunch.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: gluten.id,
-#   menu_item_id: potstickers_dinner.id
-# )
-
-# DietaryInstance.create!(
-#   dietary_id: gluten_2.id,
-#   menu_item_id: tuna_pizza.id
-# )
-
-#  DietaryInstance.create!(
-#   dietary_id: soy_2.id,
-#   menu_item_id: toro_caviar.id
-# )
 
 Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano', restaurant_id: restaurant_3.id)
 
