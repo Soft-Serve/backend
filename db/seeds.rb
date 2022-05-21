@@ -804,8 +804,8 @@ Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", sub_header: 'Caf
 puts 'Create Happy Hour 🍸'
 PromotionInteractor::Create.new(
   author: kristine, 
-  category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 50 }] }, 
-  promotion_params: { name: "Happy Hour", description: "1/2 price cocktails", start_time: '11:00', end_time: '17:00', days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
+  category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 50 }, { menu_category_id: lunch_apps.id, unit: "amount", discount: 5 }] }, 
+  promotion_params: { name: "Happy Hour", description: "1/2 price cocktails & $5 off apps", start_time: '11:00', end_time: '17:00', days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
 ).call
 
 puts 'All done 🎉🎉🎉'
