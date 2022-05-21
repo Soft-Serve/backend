@@ -797,8 +797,11 @@ nestea = MenuItem.create!(
   menu_item_id: nestea.id
 )
 
+puts 'Create banners 🪧'
 Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano', restaurant_id: restaurant_3.id)
+Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", sub_header: 'Cafe, Bar & Grill', restaurant_id: restaurant.id)
 
+puts 'Create Happy Hour 🍸'
 PromotionInteractor::Create.new(
   author: kristine, 
   category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 50 }] }, 
