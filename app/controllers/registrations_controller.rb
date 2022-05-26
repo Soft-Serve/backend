@@ -4,7 +4,7 @@ class RegistrationsController < DeviseTokenAuth::RegistrationsController
     @resource            = resource_class.new(user_params)
     @resource.provider   = provider
     @resource.restaurant = restaurant
-
+ 
     # honor devise configuration for case_insensitive_keys
     if resource_class.case_insensitive_keys.include?(:email)
       @resource.email = sign_up_params[:email].try(:downcase)

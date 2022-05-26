@@ -63,7 +63,7 @@ Rails.application.configure do
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
     :user_name          => 'kristinelmcbride@gmail.com',
-    :password           => 'sjrafgaluvetsghi',
+    :password           => '1012553klm',
     :enable_starttls_auto => true 
   }
 

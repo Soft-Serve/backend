@@ -798,7 +798,6 @@ nestea = MenuItem.create!(
 )
 
 puts 'Create banners 🪧'
-Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Bella Ciao", sub_header: 'Pizzeria Italiano', restaurant_id: restaurant_3.id)
 Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", sub_header: 'Cafe, Bar & Grill', restaurant_id: restaurant.id)
 
 puts 'Create Happy Hour 🍸'

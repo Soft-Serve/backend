@@ -27,8 +27,8 @@ module PromotionInteractor
 
     def body
       promotion.save!
-
-      category_params[:categories].each do |params|
+   
+      category_params[:categories]&.each do |params|
         PromotionCategoryInteractor::Create.new(
           author: author,
           params: params.merge(promotion_id: promotion.id)
