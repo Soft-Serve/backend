@@ -8,7 +8,7 @@ class PromotionsController < ApplicationController
   def create
     result = PromotionInteractor::Create.new(
       author: current_user,
-      promotion_params: promotion_params,
+      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id),
       category_params: category_params
     ).call
 
@@ -31,7 +31,7 @@ class PromotionsController < ApplicationController
     result = PromotionInteractor::Update.new(
       author: current_user,
       promotion: @promotion,
-      promotion_params: promotion_params,
+      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id),
       category_params: category_params
     ).call
 
@@ -79,8 +79,7 @@ class PromotionsController < ApplicationController
       :description,
       :days,
       :start_time,
-      :end_time,
-      :restaurant_id
+      :end_time
     )
   end
 
