@@ -801,10 +801,19 @@ puts 'Create banners 🪧'
 Banner.create!(photo: 'pizza_fkoxcw.jpg', header: "Cafe Monty", sub_header: 'Cafe, Bar & Grill', restaurant_id: restaurant.id)
 
 puts 'Create Happy Hour 🍸'
-PromotionInteractor::Create.new(
+promo = PromotionInteractor::Create.new(
   author: kristine, 
-  category_params: { categories: [{ menu_category_id: cocktails.id, unit: "percentage", discount: 50 }, { menu_category_id: lunch_apps.id, unit: "amount", discount: 5 }] }, 
   promotion_params: { name: "Happy Hour", description: "1/2 price cocktails & $5 off apps", start_time: '11:00', end_time: '17:00', days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
+).call.value
+
+PromotionCategoryInteractor::Create.new(
+  author: kristine, 
+  params: { menu_category_id: cocktails.id, unit: "percentage", discount: 50, promotion_id: promo.id } 
+).call
+
+PromotionCategoryInteractor::Create.new(
+  author: kristine, 
+  params: { menu_category_id: lunch_apps.id, unit: "amount", discount: 5, promotion_id: promo.id } 
 ).call
 
 puts 'All done 🎉🎉🎉'

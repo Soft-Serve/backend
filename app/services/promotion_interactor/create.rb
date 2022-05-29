@@ -1,9 +1,8 @@
 module PromotionInteractor
   class Create
-    def initialize(author:, promotion_params:, category_params:)
+    def initialize(author:, promotion_params:)
       @author = author
       @promotion_params = promotion_params.to_h
-      @category_params = category_params.to_h
     end
 
     def call
@@ -15,25 +14,16 @@ module PromotionInteractor
     attr_reader :promotion_params, :category_params, :author
 
     def promotion
-      @promotion ||= Promotion.new({
-        name: promotion_params[:name],
-        description: promotion_params[:description],
-        days: promotion_params[:days],
-        start_time: format_time(promotion_params[:start_time]),
-        end_time: format_time(promotion_params[:end_time]),
-        restaurant_id: promotion_params[:restaurant_id]
+      promotion_params.update({ 
+        start_time: format_time(promotion_params[:start_time]), 
+        end_time: format_time(promotion_params[:end_time])
       })
+      
+      @promotion ||= Promotion.new(promotion_params)
     end
 
     def body
       promotion.save!
-   
-      category_params[:categories]&.each do |params|
-        PromotionCategoryInteractor::Create.new(
-          author: author,
-          params: params.merge(promotion_id: promotion.id)
-        ).call
-      end
 
       ::Result::Ok.new(promotion)
     rescue StandardError => e
@@ -41,7 +31,9 @@ module PromotionInteractor
     end
 
     def format_time(time)
-      time_array = time.split(':')
+      return time unless time&.to_s&.match?(/\d{2}:\d{2}\z/)
+  
+      time_array = time.split(':') 
       Time.new(2022, 01, 01, time_array[0], time_array[1], 0)
     end
   end
