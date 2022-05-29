@@ -71,6 +71,8 @@ class RestaurantsController < ApplicationController
       :name,
       :colour,
       :tint,
+      :background_colour,
+      :background_tint,
       :currency,
       :logo,
       :slug,
