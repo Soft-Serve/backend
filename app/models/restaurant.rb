@@ -4,7 +4,9 @@ class Restaurant < ApplicationRecord
   }.freeze
 
   DEFAULT_PRIMARY = 'red'.freeze
-  DEFAULT_SECONDARY = 400
+  DEFAULT_TINT = 400
+  DEFAULT_BACKGROUND_COLOUR = 'gray'.freeze
+  DEFAULT_BACKGROUND_TINT = 100
   DEFAULT_FONT = 'Quicksand'
 
   # Relations
@@ -27,8 +29,10 @@ class Restaurant < ApplicationRecord
     unless persisted?
       self.currency = CURRENCIES[:cad]
       self.colour = self.colour || DEFAULT_PRIMARY
-      self.tint = self.tint || DEFAULT_SECONDARY
+      self.tint = self.tint || DEFAULT_TINT
       self.font = self.font || DEFAULT_FONT
+      self.background_colour = self.background_colour || DEFAULT_BACKGROUND_COLOUR
+      self.background_tint = self.background_tint || DEFAULT_BACKGROUND_TINT
     end
   end
 end
