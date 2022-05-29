@@ -8,8 +8,7 @@ class PromotionsController < ApplicationController
   def create
     result = PromotionInteractor::Create.new(
       author: current_user,
-      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id),
-      category_params: category_params
+      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id)
     ).call
 
     if result.successful?
@@ -31,8 +30,7 @@ class PromotionsController < ApplicationController
     result = PromotionInteractor::Update.new(
       author: current_user,
       promotion: @promotion,
-      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id),
-      category_params: category_params
+      promotion_params: promotion_params.merge!(restaurant_id: restaurant.id)
     ).call
 
     if result.successful?
@@ -81,9 +79,5 @@ class PromotionsController < ApplicationController
       :start_time,
       :end_time
     )
-  end
-
-  def category_params
-    params.permit(:categories => [:menu_category_id, :discount, :unit, :id])
   end
 end
