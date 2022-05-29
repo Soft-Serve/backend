@@ -20,9 +20,9 @@ module Csv
       worksheet.each_with_index do |row, index|
         next if row.cells.all? { |cell| cell.datatype.nil? }
         next if index == 0
-
+        
         item = MenuItem.find_by(
-          name: row[0]&.value,
+          name: row[0]&.value&.strip,
           menu_category_id: menu_category(row).id
         )
 
@@ -55,8 +55,8 @@ module Csv
 
     def item_params(row)
       {
-        name: row[0]&.value,
-        description: row[1]&.value,
+        name: row[0]&.value&.strip,
+        description: row[1]&.value&.strip,
         menu_category_id: menu_category(row).id,
       }
     end
@@ -67,18 +67,20 @@ module Csv
     end
 
     def menu(row)
-      Menu.find_or_create_by(name: row[2]&.value, restaurant_id: restaurant_id)
+      Menu.find_or_create_by(name: row[2]&.value&.strip, restaurant_id: restaurant_id)
     end
 
     def menu_category(row)
-      MenuCategory.find_or_create_by(name: row[3]&.value, menu_id: menu(row).id)
+      name = row[3]&.value ? row[3]&.value.strip : "No category"
+      
+      MenuCategory.find_or_create_by(name: name, menu_id: menu(row).id)
     end
 
     def create_allergies(item, row)
       return if row[4]&.datatype.nil?
 
-      allergies_list = row[4].value.split(",")
-
+      allergies_list = row[4].value.split(",").map(&:strip)
+   
       allergies_list.each do |allergy|
         dietary = Dietary.find_by(name: allergy, restaurant_id: restaurant_id)
 
