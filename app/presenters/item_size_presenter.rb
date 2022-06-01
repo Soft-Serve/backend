@@ -19,7 +19,7 @@ class ItemSizePresenter
     return nil unless promotion_category && promotion&.active?
 
     if promotion_category.unit == 'percentage'
-      item.price * (promotion_category.discount / 100.00)
+      item.price - (item.price * (promotion_category.discount / 100.00))
     else
       item.price - promotion_category.discount
     end
