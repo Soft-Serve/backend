@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :promotions, only: %i[index]
   end
 
+  get "/restaurants/:restaurant_id/active_promotion", to: "promotions#active_promotion"
+
   resources :dietaries, only: %i[show create update destroy]
 
   resources :users, only: %i[update]

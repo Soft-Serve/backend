@@ -806,6 +806,11 @@ promo = PromotionInteractor::Create.new(
   promotion_params: { name: "Happy Hour", description: "1/2 price cocktails & $5 off apps", start_time: '11:00', end_time: '17:00', days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
 ).call.value
 
+promo = PromotionInteractor::Create.new(
+  author: kristine, 
+  promotion_params: { name: "Late Night Happy Hour", description: "1/2 price cocktails & $5 off apps", start_time: '18:00', end_time: '23:00', days: "Monday,Tuesday,Wednesday,Thursday,Friday", restaurant_id: restaurant.id }
+).call.value
+
 PromotionCategoryInteractor::Create.new(
   author: kristine, 
   params: { menu_category_id: cocktails.id, unit: "percentage", discount: 50, promotion_id: promo.id } 

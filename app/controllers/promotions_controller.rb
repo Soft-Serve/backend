@@ -26,6 +26,12 @@ class PromotionsController < ApplicationController
     end
   end
 
+  def active_promotion
+    promo = collection.filter(active: true).first
+
+    promo ? render json: serialize(promo) : nil
+  end
+
   def update
     result = PromotionInteractor::Update.new(
       author: current_user,
