@@ -29,7 +29,9 @@ class PromotionsController < ApplicationController
   def active_promotion
     promo = collection.filter(active: true).first
 
-    promo ? render json: serialize(promo) : nil
+    return nil unless promo
+    
+    render json: serialize(promo) 
   end
 
   def update
