@@ -16,6 +16,6 @@ class Promotion < ApplicationRecord
   end
 
   def now 
-    @now ||= Time.new(2022, 1, 1, Time.zone.now.hour, Time.zone.now.min, Time.zone.now.sec)
+    @now ||= Time.new(2022, 1, 1, Time.zone.now.hour, Time.zone.now.min, Time.zone.now.sec, '-05:00')
   end
 end
