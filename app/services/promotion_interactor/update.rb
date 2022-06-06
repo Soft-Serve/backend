@@ -31,7 +31,8 @@ module PromotionInteractor
       return time unless time&.to_s&.match?(/\d{2}:\d{2}\z/)
       
       time_array = time.split(':')
-      Time.new(2022, 01, 01, time_array[0], time_array[1], 0)
+      
+      Time.new(2022, 01, 01, time_array[0], time_array[1], 00, '-05:00')
     end
   end
 end
