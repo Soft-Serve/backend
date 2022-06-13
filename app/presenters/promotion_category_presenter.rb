@@ -11,7 +11,9 @@ class PromotionCategoryPresenter
       discount: item.discount,
       unit: item.unit,
       promotion_id: item.promotion_id,
-      menu_category_id: item.menu_category_id
+      menu_category_id: item.menu_category_id,
+      menu_category_name: item.menu_category.name,
+      menu_name: item.menu_category.menu.name
     }
   end
 end
