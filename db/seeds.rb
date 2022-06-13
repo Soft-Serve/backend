@@ -121,22 +121,22 @@ vegetarian = Dietary.find_by(name: 'Vegetarian', restaurant_id: restaurant.id)
 puts 'Creating menus 📄'
 
 lunch = Menu.create!(
-  name: 'Lunch menu',
+  name: 'Lunch',
   restaurant_id: restaurant.id
 )
 
 dinner = Menu.create!(
-  name: 'Dinner menu',
+  name: 'Dinner',
   restaurant_id: restaurant.id
 )
 
 dessert = Menu.create!(
-  name: 'Dessert menu',
+  name: 'Dessert',
   restaurant_id: restaurant.id
 )
 
 drinks = Menu.create!(
-  name: 'Drinks menu',
+  name: 'Drinks',
   restaurant_id: restaurant.id
 )
 
